@@ -18,46 +18,6 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  apps/docs:
-    dependencies:
-      '@apen-ui/core':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      next:
-        specifier: 16.2.2
-        version: 16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react:
-        specifier: 19.2.4
-        version: 19.2.4
-      react-dom:
-        specifier: 19.2.4
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@tailwindcss/postcss':
-        specifier: ^4
-        version: 4.2.2
-      '@types/node':
-        specifier: ^20
-        version: 20.19.37
-      '@types/react':
-        specifier: ^19
-        version: 19.2.2
-      '@types/react-dom':
-        specifier: ^19
-        version: 19.2.2(@types/react@19.2.2)
-      eslint:
-        specifier: ^9
-        version: 9.39.4(jiti@2.6.1)
-      eslint-config-next:
-        specifier: 16.2.2
-        version: 16.2.2(@typescript-eslint/parser@8.57.1(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.2))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.2)
-      tailwindcss:
-        specifier: ^4
-        version: 4.2.2
-      typescript:
-        specifier: ^5
-        version: 5.9.2
-
   apps/web:
     dependencies:
       '@apen-ui/core':
@@ -176,8 +136,8 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.2)(react@19.2.0)
       apen-icons:
-        specifier: ^1.0.4
-        version: 1.0.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^1.0.9
+        version: 1.0.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1297,8 +1257,8 @@ packages:
   any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
 
-  apen-icons@1.0.4:
-    resolution: {integrity: sha512-Luco+2ogPDV7UfmWa6WLByPx1iJl372j88FX5WUBLQh6fc7MT5LlQmxH2lz1LohpC9YJsiuE0RTXhHcnqSBf4A==}
+  apen-icons@1.0.9:
+    resolution: {integrity: sha512-vw6OUp1mcqAch2hDDVNHup1qPm8sP5OfAijGMT50lwaRtnGfI4TPTG3L0OMChhWwsw1gJzWoz9Qf9lrGb9szdA==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -3781,7 +3741,7 @@ snapshots:
 
   any-promise@1.3.0: {}
 
-  apen-icons@1.0.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  apen-icons@1.0.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
