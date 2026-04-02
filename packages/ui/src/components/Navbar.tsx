@@ -6,7 +6,6 @@ import { ProfileDropdown } from './ProfileDropdown';
 
 interface NavbarProps {
   onToggleSidebar: () => void;
-  // New Theme Props
   isDark: boolean;
   onToggleTheme: () => void;
   userName?: string;

@@ -13,3 +13,4 @@ export * from "./components/Navbar";
 
 // 4. Export Boilerplates
 export * from './boiler-plates/dashboards/Dashboard01';
+export * from './boiler-plates/logins/LoginPage';
