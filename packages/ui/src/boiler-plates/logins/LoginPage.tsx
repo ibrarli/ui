@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Mail, ArrowRight, AtSign, LockKeyhole } from "apen-icons";
+import { Mail, ArrowRight, AtSign, LockKeyhole, Eye, EyeClosed } from "apen-icons";
 import { cn } from "../../lib/utils";
 import { Toast } from "../../components/toast/Toast";
 
@@ -188,28 +188,45 @@ export const LoginPage = () => {
 };
 
 // --- SUB-COMPONENTS ---
-const InputGroup = ({ icon, label, ...props }: any) => (
-  <div className="space-y-1.5 text-left">
-    <label className="text-[10px] font-bold text-secondary dark:text-neutral-500 uppercase tracking-[0.15em] ml-1">
-      {label}
-    </label>
-    <div className="relative group mt-1">
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-primary dark:group-focus-within:text-white transition-colors">
-        {icon}
-      </div>
-      <input
-        {...props}
-        className={cn(
-          "w-full h-11 pl-10 pr-4 rounded-xl border outline-none transition-all text-sm",
-          // Light Mode
-          " border-neutral-100 text-primary placeholder:text-neutral-400",
-          // Dark Mode
-          "dark:bg-surface-900 dark:border-surface-800 dark:text-white dark:placeholder:text-neutral-400 dark:focus:border-surface-600 ",
+const InputGroup = ({ icon, label, type, ...props }: any) => {
+  // 2. Add local state to toggle visibility
+  const [show, setShow] = useState(false);
+  const isPassword = type === "password";
+
+  return (
+    <div className="space-y-1.5 text-left">
+      <label className="text-[10px] font-bold text-secondary dark:text-neutral-500 uppercase tracking-[0.15em] ml-1">
+        {label}
+      </label>
+      <div className="relative group mt-1">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-primary dark:group-focus-within:text-white transition-colors">
+          {icon}
+        </div>
+        <input
+          {...props}
+          // 3. Toggle the type between 'password' and 'text'
+          type={isPassword ? (show ? "text" : "password") : type}
+          className={cn(
+            "w-full h-11 pl-10 pr-12 rounded-xl border outline-none transition-all text-sm", // Increased padding-right for the eye
+            " border-neutral-100 text-primary placeholder:text-neutral-400",
+            "dark:bg-surface-900 dark:border-surface-800 dark:text-white dark:placeholder:text-neutral-400 dark:focus:border-surface-600 ",
+          )}
+        />
+        
+        {/* 4. The Eye Toggle Button */}
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setShow(!show)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-primary dark:hover:text-white transition-colors cursor-pointer p-1"
+          >
+            {show ? <Eye size={18} /> : <EyeClosed size={18} />}
+          </button>
         )}
-      />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const SocialButton = ({
   icon,

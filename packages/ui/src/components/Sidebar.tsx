@@ -43,7 +43,7 @@ export const Sidebar = ({ isCollapsed, isMobileOpen = false, setIsMobileOpen }: 
         className={cn(
           "fixed inset-y-0 left-0 z-70 flex flex-col transition-all duration-500 ease-in-out border-r shrink-0",
           "lg:sticky lg:top-16 lg:h-[calc(100vh-64px)]",
-          "bg-white dark:bg-surface-950 border-neutral-100 dark:border-surface-800",
+          " dark:bg-surface-950 border-neutral-100 dark:border-surface-800",
           isCollapsed ? 'lg:w-16' : 'lg:w-60',
           isMobileOpen ? 'translate-x-0 w-64' : '-translate-x-full lg:translate-x-0',
         )}
@@ -76,7 +76,7 @@ export const Sidebar = ({ isCollapsed, isMobileOpen = false, setIsMobileOpen }: 
         </div>
 
         {/* Footer Settings */}
-        <div className="p-2 border-t border-neutral-50 dark:border-surface-800 bg-white dark:bg-surface-950">
+        <div className="p-2 border-t border-neutral-50 dark:border-surface-800  dark:bg-surface-950">
           <SidebarItem 
             icon={<Settings size={18} />} 
             label="Settings" 
