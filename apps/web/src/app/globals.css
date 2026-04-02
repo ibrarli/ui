@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* 1. Monorepo UI Imports */
+@import "../../../../packages/ui/src/index.css";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+
+@theme inline {
+  /* Define the scale so Tailwind knows what 'surface-900' means */
+  --color-surface-900: var(--surface-900);
+  --color-surface-950: var(--surface-950);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Light Mode Surfaces: Should be White/Light Gray */
+  --surface-900: #f5f5f5; 
+  --surface-950: #ffffff; 
+}
+
+/* This is the selector next-themes uses */
+.dark {
+  --background: #131314;
+  --foreground: #ffffff;
+
+  /* Dark Mode Surfaces: The ones you actually want in Dark Mode */
+  --surface-900: #1c1c1c; 
+  --surface-950: #0a0a0a; 
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Smooth transition for the whole page */
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}

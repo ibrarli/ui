@@ -1,0 +1,26 @@
+{
+  "name": "apen-ui",
+  "version": "0.0.1",
+  "description": "CLI for ApenUI components",
+  "type": "module",
+  "bin": {
+    "apenui": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --clean --minify",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "fs-extra": "^11.1.1",
+    "pnpm": "^10.33.0",
+    "prompts": "^2.4.2"
+  }
+}
