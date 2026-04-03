@@ -3,6 +3,7 @@ import React from 'react';
 import { cn } from '../../../lib/utils';
 import { SidebarGroup } from './SidebarGroup';
 import { SidebarItem } from './SidebarItem';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export interface SidebarNavItem {
   id: string;
@@ -38,30 +39,61 @@ export const Sidebar = ({
 
   return (
     <>
-      {/* Mobile Backdrop */}
-      {isMobileOpen && (
-        <div 
-          className="fixed inset-0 bg-primary/10 backdrop-blur-sm z-60 lg:hidden animate-in fade-in duration-300"
-          onClick={() => setIsMobileOpen?.(false)}
-        />
-      )}
+      {/* Mobile Backdrop - Smoother Fade */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-primary/10 backdrop-blur-sm z-60 lg:hidden"
+            onClick={() => setIsMobileOpen?.(false)}
+          />
+        )}
+      </AnimatePresence>
 
-      <aside className={cn(
-        "fixed inset-y-0 left-0 z-70 flex flex-col transition-all duration-500 ease-in-out border-r",
-        "lg:sticky lg:top-16 lg:h-[calc(100vh-64px)] bg-white dark:bg-surface-950 border-neutral-100 dark:border-surface-800",
-        isCollapsed ? 'lg:w-16' : 'lg:w-60',
-        isMobileOpen ? 'translate-x-0 w-64' : '-translate-x-full lg:translate-x-0'
-      )}>
+      <motion.aside 
+        // Use Framer Motion for width to ensure sub-pixel smoothing
+        animate={{ 
+          width: isCollapsed ? 64 : 240,
+          x: isMobileOpen ? 0 : (typeof window !== 'undefined' && window.innerWidth < 1024 ? -256 : 0)
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className={cn(
+          "fixed inset-y-0 left-0 z-70 flex flex-col border-r bg-white dark:bg-surface-950 border-neutral-100 dark:border-surface-800",
+          "lg:sticky lg:top-16 lg:h-[calc(100vh-64px)]",
+          // Removing manual translate classes as motion handles 'x'
+        )}
+      >
         
         {/* Main Navigation Scroll Area */}
-        <div className="flex-1 overflow-y-auto p-2 pt-4 space-y-4">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-2 pt-4 space-y-6 scrollbar-hide">
           {navigation.map((section, idx) => (
             <SidebarGroup 
               key={section.group || `section-${idx}`} 
-              label={section.group} // If undefined, the Group component handles it
+              label={section.group} 
               showFull={showFull}
             >
-              {section.items.map((item) => (
+              <div className="space-y-1">
+                {section.items.map((item) => (
+                  <SidebarItem 
+                    key={item.id}
+                    {...item}
+                    collapsed={isCollapsed}
+                    mobileOpen={isMobileOpen}
+                  />
+                ))}
+              </div>
+            </SidebarGroup>
+          ))}
+        </div>
+
+        {/* Dynamic Footer Area */}
+        {footerItems.length > 0 && (
+          <div className="p-2 border-t border-neutral-50 dark:border-surface-800 bg-white/50 dark:bg-surface-950/50 backdrop-blur-md">
+            <div className="space-y-1">
+              {footerItems.map((item) => (
                 <SidebarItem 
                   key={item.id}
                   {...item}
@@ -69,24 +101,10 @@ export const Sidebar = ({
                   mobileOpen={isMobileOpen}
                 />
               ))}
-            </SidebarGroup>
-          ))}
-        </div>
-
-        {/* Dynamic Footer Area */}
-        {footerItems.length > 0 && (
-          <div className="p-2 border-t border-neutral-50 dark:border-surface-800 space-y-0.5">
-            {footerItems.map((item) => (
-              <SidebarItem 
-                key={item.id}
-                {...item}
-                collapsed={isCollapsed}
-                mobileOpen={isMobileOpen}
-              />
-            ))}
+            </div>
           </div>
         )}
-      </aside>
+      </motion.aside>
     </>
   );
 };
