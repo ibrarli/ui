@@ -1,6 +1,7 @@
+"use client";
 import { TriangleAlert, X } from "apen-icons";
 import { useEffect } from "react";
-import { cn } from "../../lib/utils"; // Assuming you have a cn utility
+import { cn } from "../../../lib/utils";
 
 export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
@@ -14,29 +15,27 @@ interface ToastProps {
 }
 
 export const Toast = ({ id, message, index, total, position, onClose }: ToastProps) => {
+  // Logic: First error in array (index 0) is at the front
   const reverseIndex = total - 1 - index;
 
   useEffect(() => {
-    const baseTime = 2000;
-    const staggerDelay = reverseIndex * 500; 
+    const baseTime = 5000; // Increased to 5s so users can actually read it
     const timer = setTimeout(() => {
       onClose(id);
-    }, baseTime + staggerDelay);
+    }, baseTime + (index * 200));
     return () => clearTimeout(timer);
-  }, [id, onClose, reverseIndex]);
+  }, [id, onClose, index]);
 
+  // Limit visual stack to top 3
   if (reverseIndex > 2) return null;
 
   const isBottom = position.includes('bottom');
   const isCenter = position.includes('center');
-  const isRight = position.includes('right');
-  const isLeft = position.includes('left');
 
-  const scale = 1 - reverseIndex * 0.03;
+  const scale = 1 - reverseIndex * 0.04;
   const opacity = 1 - reverseIndex * 0.3;
   const yTranslate = reverseIndex * (isBottom ? -12 : 12);
 
-  // Define position classes carefully to avoid overlaps
   const positionClasses = {
     'top-left': 'top-6 left-6',
     'top-center': 'top-6 left-0 md:left-1/2',
@@ -51,6 +50,7 @@ export const Toast = ({ id, message, index, total, position, onClose }: ToastPro
       className={cn(
         "fixed z-100 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
         "animate-in fade-in px-4 md:px-0 w-full md:w-auto",
+        "pointer-events-auto", // FIXED: Allows clicking the close button
         isBottom ? "slide-in-from-bottom-10" : "slide-in-from-top-10",
         positionClasses[position]
       )}
@@ -68,10 +68,8 @@ export const Toast = ({ id, message, index, total, position, onClose }: ToastPro
       } as React.CSSProperties}
     >
       <div className={cn(
-        "flex items-center gap-3 px-4 py-3 rounded-2xl dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 shadow-2xl min-w-full md:min-w-85 max-w-100 ",
-        isCenter ? "mx-auto" : "",
-        isRight ? "md:ml-auto" : "",
-        isLeft ? "md:mr-auto" : ""
+        "flex items-center gap-3 px-4 py-3 rounded-2xl  dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 shadow-2xl min-w-full md:min-w-85 max-w-100",
+        isCenter ? "mx-auto" : ""
       )}>
         <div className="shrink-0 w-8 h-8 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-500">
           <TriangleAlert size={18} />
@@ -84,14 +82,19 @@ export const Toast = ({ id, message, index, total, position, onClose }: ToastPro
             {message}
           </p>
         </div>
-        {reverseIndex === 0 && (
-          <button 
-            onClick={() => onClose(id)} 
-            className="cursor-pointer text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors ml-2"
-          >
-            <X size={10} /> 
-          </button>
-        )}
+        
+        {/* FIXED: Removed reverseIndex === 0 check so all visible toasts are closable */}
+        <button 
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onClose(id);
+          }} 
+          className="cursor-pointer p-1.5 rounded-lg text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all ml-2"
+        >
+          <X size={14} /> 
+        </button>
       </div>
     </div>
   );

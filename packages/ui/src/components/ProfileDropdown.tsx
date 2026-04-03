@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { User, Settings, Lock, Bug } from 'apen-icons';
+import { User2, Settings, Lock, Bug } from 'apen-icons';
 import { cn } from '../lib/utils';
 
 interface ProfileDropdownProps {
@@ -30,7 +30,7 @@ export const ProfileDropdown = ({ isOpen, userName, userRole }: ProfileDropdownP
 
       {/* Menu Items Area */}
       <div className="p-1.5 dark:!bg-surface-900"> 
-        <DropdownItem icon={<User size={16} />} label="My Profile" />
+        <DropdownItem icon={<User2 size={16} />} label="My Profile" />
         <DropdownItem icon={<Bug size={16} />} label="Security" />
         <DropdownItem icon={<Settings size={16} />} label="Account Settings" />
         

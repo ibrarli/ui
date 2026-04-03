@@ -5,10 +5,7 @@ import "./index.css";
 export * from "./lib/utils";
 
 // 3. Export Components 
-// Make sure these paths exactly match your folder names (e.g., "components" vs "Sidebar")
-export * from "./components/Button";
-export * from "./components/Card";
-export * from "./components/Sidebar";
+export * from "./components/ui/sidebar/Sidebar";
 export * from "./components/Navbar";
 
 // 4. Export Boilerplates
