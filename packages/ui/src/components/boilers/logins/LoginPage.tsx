@@ -3,12 +3,12 @@ import React from "react";
 import { Mail, ArrowRight, AtSign, LockKeyhole, User2 } from "apen-icons";
 
 // UI Components
-import { InputGroup } from "../../components/ui/input-group/InputGroup";
-import { Toast } from "../../components/ui/toast/Toast";
-import { MainHeading, BodySmall } from "../../components/ui/typography/Typography";
-import { Button } from "../../components/ui/button/Button";
-import { SocialIcons } from "../../components/ui/icons/SocialIcons";
-import { Divider } from "../../components/ui/divider/Divider";
+import { InputGroup } from "../../ui/input-group/InputGroup";
+import { Toast } from "../../ui/toast/Toast";
+import { MainHeading, BodySmall } from "../../ui/typography/Typography";
+import { Button } from "../../ui/button/Button";
+import { SocialIcons } from "../../ui/icons/SocialIcons";
+import { Divider } from "../../ui/divider/Divider";
 
 // Hook
 import { useAuthForm } from "./useAuthForm";

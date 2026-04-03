@@ -9,7 +9,7 @@ import {
   Lock, 
   CircleX 
 } from 'apen-icons';
-import type { SidebarSection, SidebarNavItem } from '../../components/ui/sidebar/Sidebar';
+import type { SidebarSection, SidebarNavItem } from '../../ui/sidebar/Sidebar';
 
 export const NAVIGATION_DATA: SidebarSection[] = [
   {

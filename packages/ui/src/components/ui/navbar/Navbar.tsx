@@ -1,20 +1,20 @@
 "use client";
 import React from 'react';
 import { MenuHamburger, Search, Sun, Moon, ChevronDown, User, Settings, Lock } from 'apen-icons';
-import { cn } from '../lib/utils';
+import { cn } from '../../../lib/utils';
 
 // UI Components
-import { Button } from '../components/ui/button/Button';
-import { Divider } from '../components/ui/divider/Divider';
-import { InputGroup } from '../components/ui/input-group/InputGroup';
-import { Body, BodySmall, Label, Overline } from '../components/ui/typography/Typography';
-import { Logo } from './ui/logo/Logo';
+import { Button } from '../button/Button';
+import { Divider } from '../divider/Divider';
+import { InputGroup } from '../input-group/InputGroup';
+import { Body, BodySmall, Label, Overline } from '../typography/Typography';
+import { Logo } from '../logo/Logo';
 
 // New Dropdown System
-import { Dropdown } from './ui/dropdown/Dropdown';
-import { DropdownTrigger } from './ui/dropdown/DropdownTrigger';
-import { DropdownContent } from './ui/dropdown/DropdownContent';
-import { DropdownItem } from './ui/dropdown/DropdownItem';
+import { Dropdown } from '../dropdown/Dropdown';
+import { DropdownTrigger } from '../dropdown/DropdownTrigger';
+import { DropdownContent } from '../dropdown/DropdownContent';
+import { DropdownItem } from '../dropdown/DropdownItem';
 
 interface NavbarProps {
   onToggleSidebar: () => void;

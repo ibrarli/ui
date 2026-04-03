@@ -6,8 +6,8 @@ export * from "./lib/utils";
 
 // 3. Export Components 
 export * from "./components/ui/sidebar/Sidebar";
-export * from "./components/Navbar";
+export * from "./components/ui/navbar/Navbar";
 
 // 4. Export Boilerplates
-export * from './boiler-plates/dashboards/Dashboard01';
-export * from './boiler-plates/logins/LoginPage';
+export * from './components/boilers/dashboards/Dashboard01';
+export * from './components/boilers/logins/LoginPage';

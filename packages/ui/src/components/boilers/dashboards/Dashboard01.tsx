@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '../../../lib/utils';
 
 // UI Components
-import { Navbar } from '../../components/Navbar';
-import { Sidebar } from '../../components/ui/sidebar/Sidebar';
-import { MainHeading, Body, Overline } from '../../components/ui/typography/Typography';
+import { Navbar } from '../../ui/navbar/Navbar';
+import { Sidebar } from '../../ui/sidebar/Sidebar';
+import { MainHeading, Body, Overline } from '../../ui/typography/Typography';
 
 // Import Separated Data
 import { NAVIGATION_DATA, FOOTER_DATA } from './data';
