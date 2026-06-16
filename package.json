@@ -1,18 +1,13 @@
 {
   "name": "apen-ui",
-  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.32.1",
-  "engines": {
-    "node": ">=20",
-    "pnpm": ">=10"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm --filter www build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "next": "16.2.9"
+  },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^25.9.3",
