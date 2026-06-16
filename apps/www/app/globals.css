@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Fix: Explicitly tell Tailwind v4 to scan your external monorepo UI workspace */
+@source "../../packages/apen-ui/src";
+
+/* Optional: Define your custom theme tokens if they aren't configured yet */
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+}
