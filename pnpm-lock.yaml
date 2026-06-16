@@ -35,6 +35,9 @@ importers:
       '@types/mdx':
         specifier: ^2.0.14
         version: 2.0.14
+      apen-ui:
+        specifier: workspace:*
+        version: link:../../packages/apen-ui
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
