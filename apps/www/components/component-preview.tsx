@@ -7,6 +7,12 @@ interface PreviewProps {
   name: string;
 }
 
+const demoNavItems = [
+  { label: "Dashboard", href: "#" },
+  { label: "Analytics", href: "#" },
+  { label: "Settings", href: "#" },
+];
+
 export function ComponentPreview({ name }: PreviewProps) {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
@@ -52,7 +58,12 @@ export function ComponentPreview({ name }: PreviewProps) {
       {/* Display Panel */}
       <div className="p-6 bg-white dark:bg-zinc-950">
         {activeTab === "preview" ? (
-          <div className="flex justify-center items-center min-h-[150px] w-full max-w-sm mx-auto">
+          <div 
+            className={cn(
+              "flex justify-center items-center min-h-[150px] w-full",
+              name === "navbar" ? "max-w-full" : "max-w-sm mx-auto"
+            )}
+          >
             <React.Suspense
               fallback={
                 <div className="text-sm text-zinc-500">
@@ -60,8 +71,6 @@ export function ComponentPreview({ name }: PreviewProps) {
                 </div>
               }
             >
-              {/* Conditional rendering depending on component needs */}
-              {/* Conditional rendering depending on component needs */}
               {name === "input" ? (
                 <LazyComponent placeholder="Type something..." />
               ) : name === "textarea" ? (
@@ -103,7 +112,6 @@ export function ComponentPreview({ name }: PreviewProps) {
                 </div>
               ) : name === "card" ? (
                 <div className="w-full max-w-sm">
-                  {/* Since Card has complex compound parts, we can render a clean structural demo representation */}
                   <div className="rounded-xl border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 p-6 space-y-2">
                     <h3 className="font-semibold text-xl leading-none">
                       Create project
@@ -114,7 +122,69 @@ export function ComponentPreview({ name }: PreviewProps) {
                     <div className="h-10 w-full bg-zinc-100 dark:bg-zinc-900 rounded-md mt-4"></div>
                   </div>
                 </div>
-              ) : (
+              // Find your name === "navbar" block inside components/component-preview.tsx and expand it to this:
+) : name === "navbar" ? (
+  <div className="w-full space-y-8 p-2 bg-zinc-900/10 dark:bg-zinc-950/40 rounded-xl">
+    
+    {/* Variant 1: Pure Apple Style Glass */}
+    <div className="space-y-2">
+      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block px-1">
+        1. Premium Glass Layer (Centered Links)
+      </span>
+      <LazyComponent 
+        items={demoNavItems}
+        theme="glass"
+        layout="center-nav"
+        logoText="Apen Glass"
+        actionButtonText="Get Started"
+      />
+    </div>
+
+    {/* Variant 2: Left Aligned System Links (Basic Border) */}
+    <div className="space-y-2">
+      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block px-1">
+        2. Left-Aligned Layout (Basic Slate Theme)
+      </span>
+      <LazyComponent 
+        items={demoNavItems}
+        theme="basic"
+        layout="left-nav"
+        logoText="Apen Apps"
+        actionButtonText="Dashboard"
+      />
+    </div>
+
+    {/* Variant 3: Search Focused Floating Island Container */}
+    <div className="space-y-2">
+      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block px-1">
+        3. Search-Focused Utility (Bordered Island Box Theme)
+      </span>
+      <LazyComponent 
+        items={demoNavItems}
+        theme="bordered"
+        layout="search-focused"
+        logoText="Apen Core"
+        actionButtonText="Search"
+        className="mt-0"
+      />
+    </div>
+
+    {/* Variant 4: Minimalist Actions Only (No Logo passed) */}
+    <div className="space-y-2">
+      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block px-1">
+        4. Pure Utility (No Logo passed + Left-Nav)
+      </span>
+      <LazyComponent 
+        items={demoNavItems}
+        theme="basic"
+        layout="left-nav"
+        logoText="" 
+        actionButtonText="Deploy Core"
+      />
+    </div>
+
+  </div>
+): (
                 <LazyComponent>Button</LazyComponent>
               )}
             </React.Suspense>
@@ -127,4 +197,9 @@ export function ComponentPreview({ name }: PreviewProps) {
       </div>
     </div>
   );
+}
+
+// Simple internal helper utility to join classes smoothly
+function cn(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(" ");
 }
