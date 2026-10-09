@@ -1,16 +1,15 @@
 {
-  "name": "apen-ui",
+  "name": "apen-ui-monorepo",
   "private": true,
   "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "build": "pnpm --filter www build"
-  },
-  "dependencies": {
-    "next": "16.2.9"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^25.9.3",
-    "@types/prompts": "^2.4.9"
+    "dev": "pnpm --filter www dev",
+    "build": "pnpm registry:build && pnpm --filter apen-ui build && pnpm --filter www build",
+    "registry:build": "node packages/ui/scripts/build-registry.mjs",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm --filter www lint"
   }
 }

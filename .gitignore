@@ -1,1 +1,24 @@
+# dependencies
 node_modules
+.pnpm-store
+
+# builds
+dist
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# generated registry output (built from packages/ui)
+apps/www/public/r
+packages/cli/registry
+
+# env
+.env*
+!.env.example
+
+# misc
+.DS_Store
+*.log
+.vercel
+.turbo
