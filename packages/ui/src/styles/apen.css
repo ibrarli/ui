@@ -1,0 +1,135 @@
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Apen UI theme. Token names follow shadcn/ui so existing knowledge carries over. */
+:root {
+  --radius: 1rem;
+
+  --brand-orange: #f15a29;
+  --brand-blue: #00aeef;
+
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #f8f9fa;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #f15a29;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f3f4;
+  --secondary-foreground: #111827;
+  --muted: #f1f3f4;
+  --muted-foreground: #5f6368;
+  --accent: #f1f3f4;
+  --accent-foreground: #111827;
+  --destructive: #e5484d;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --info: #00aeef;
+  --border: #e8eaed;
+  --input: #dadce0;
+  --ring: #f15a29;
+
+  --sidebar: #f8f9fa;
+  --sidebar-foreground: #111827;
+  --sidebar-accent: #e8eaed;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #e8eaed;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #131314;
+  --card-foreground: #ffffff;
+  --popover: #1e1f20;
+  --popover-foreground: #ffffff;
+  --primary: #f26a3d;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1f20;
+  --secondary-foreground: #ffffff;
+  --muted: #1e1f20;
+  --muted-foreground: #9aa0a6;
+  --accent: #282a2c;
+  --accent-foreground: #ffffff;
+  --destructive: #f2555a;
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --info: #33bef2;
+  --border: #282a2c;
+  --input: #3c4043;
+  --ring: #f26a3d;
+
+  --sidebar: #131314;
+  --sidebar-foreground: #ffffff;
+  --sidebar-accent: #282a2c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #282a2c;
+}
+
+@theme inline {
+  --font-sans: var(--font-jakarta, "Plus Jakarta Sans"), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-quicksand, "Quicksand"), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.25);
+  --radius-2xl: calc(var(--radius) * 1.5);
+  --radius-3xl: calc(var(--radius) * 2);
+
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-blue: var(--brand-blue);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-blue) 100%);
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-blue) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--brand-orange) 20%, transparent);
+  }
+}
