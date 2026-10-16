@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Apen UI config (apen.json)",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "tsx": { "type": "boolean", "description": "Write .tsx files (false writes .jsx)." },
+    "rsc": { "type": "boolean", "description": "Keep \"use client\" directives for React Server Components." },
+    "css": { "type": "string", "description": "Path to the global CSS file that holds the theme." },
+    "aliases": {
+      "type": "object",
+      "properties": {
+        "components": { "type": "string" },
+        "ui": { "type": "string", "description": "Where components are written, e.g. @/components/ui." },
+        "utils": { "type": "string", "description": "Import path of the cn() helper, e.g. @/lib/utils." }
+      },
+      "required": ["ui", "utils"]
+    }
+  },
+  "required": ["css", "aliases"]
+}

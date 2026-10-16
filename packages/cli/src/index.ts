@@ -1,45 +1,48 @@
-#!/usr/bin/env node
-import { Command } from "commander";
-import fs from "fs-extra";
-import path from "path";
+import { Command } from "commander"
 
-const program = new Command();
+import { add } from "./commands/add"
+import { init } from "./commands/init"
+import { list } from "./commands/list"
+import { logger } from "./utils/logger"
+import pkg from "../package.json"
+
+const program = new Command()
+  .name("apen-ui")
+  .description("Add rounded, dashboard-ready Apen UI components to your project.")
+  .version(pkg.version, "-v, --version")
 
 program
-  .name("apen-ui")
-  .description("Add components directly to your codebase")
-  .version("0.1.0");
+  .command("init")
+  .description("set up Apen UI: apen.json, the cn() helper and the theme tokens")
+  .option("-c, --cwd <path>", "the project directory", process.cwd())
+  .option("-y, --yes", "accept the detected defaults", false)
+  .option("-f, --force", "overwrite existing config, utils and theme", false)
+  .option("--no-install", "do not install dependencies")
+  .option("-r, --registry <url>", "use a hosted registry instead of the bundled one")
+  .action(async (options) => {
+    await init(options)
+  })
 
 program
   .command("add")
-  .argument("[component]", "component name to add")
-  .action(async (componentName) => {
-    try {
-      // 1. Fetch registry.json hosted on your live doc site
-      const response = await fetch("https://apen-ui.com/registry.json");
-      const registry = (await response.json()) as any[];
+  .description("add components to your project")
+  .argument("[components...]", "the components to add, e.g. button card sidebar")
+  .option("-c, --cwd <path>", "the project directory", process.cwd())
+  .option("-a, --all", "add every component", false)
+  .option("-y, --yes", "skip confirmation prompts", false)
+  .option("-o, --overwrite", "overwrite files that already exist", false)
+  .option("-p, --path <path>", "write components to this folder instead of the ui alias")
+  .option("--no-install", "do not install dependencies")
+  .option("-r, --registry <url>", "use a hosted registry instead of the bundled one")
+  .action((components, options) => add(components, options))
 
-      // 2. Find target component
-      const component = registry.find((c: any) => c.name === componentName);
-      if (!component) {
-        console.error(`❌ Component "${componentName}" not found in registry.`);
-        return;
-      }
+program
+  .command("list")
+  .description("list every available component")
+  .option("-r, --registry <url>", "use a hosted registry instead of the bundled one")
+  .action((options) => list(options))
 
-      // 3. Write file locally to user's directory
-      const targetDir = path.join(process.cwd(), "components/ui");
-      await fs.ensureDir(targetDir);
-
-      for (const file of component.files) {
-        const filePath = path.join(targetDir, file.name);
-        await fs.writeFile(filePath, file.content);
-        console.log(`✅ Created: ${file.name} at ${targetDir}`);
-      }
-      
-      console.log("\n👉 Don't forget to install missing dependencies mentioned in your docs!");
-    } catch (error) {
-      console.error("❌ Failed to fetch or write the component:", error);
-    }
-  });
-
-program.parse();
+program.parseAsync().catch((error: unknown) => {
+  logger.error(error instanceof Error ? error.message : String(error))
+  process.exit(1)
+})
