@@ -13,14 +13,11 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/registry/*": ["../../packages/apen-ui/src/*"]
+      "@/components/ui/*": ["../../packages/ui/src/ui/*"],
+      "@/lib/utils": ["../../packages/ui/src/lib/utils"],
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -29,7 +26,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "content/docs/button.mdx"  ],
+    "**/*.mts",
+    "../../packages/ui/src/**/*.tsx",
+    "../../packages/ui/src/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

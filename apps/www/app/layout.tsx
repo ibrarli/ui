@@ -1,69 +1,50 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import dynamic from "next/dynamic";
-import { registry } from "@/__registry__/components";
-// Explicitly import your navbar prop definitions from your local registry source structure
-import type { NavbarProps } from "../../../packages/apen-ui/src/ui/navbar"; 
-import "./globals.css";
+import type { Metadata, Viewport } from "next"
+import { Plus_Jakarta_Sans, Quicksand } from "next/font/google"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { siteConfig } from "@/lib/site"
+import { themeScript } from "@/components/theme-toggle"
+import "./globals.css"
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const quicksand = Quicksand({
   subsets: ["latin"],
-});
+  variable: "--font-quicksand",
+  weight: ["500", "600", "700"],
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
+})
 
 export const metadata: Metadata = {
-  title: "Apen UI Docs",
-  description: "Advanced components engineered for pure full-stack applications.",
-};
+  title: {
+    default: `${siteConfig.name}: rounded components for dashboards`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: {
+    icon: [
+      { url: "/favicon-light.ico", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon-dark.ico", media: "(prefers-color-scheme: dark)" },
+    ],
+  },
+}
 
-const mainNavigation = [
-  { label: "Components", href: "#components" },
-  { label: "Documentation", href: "/docs" },
-  { label: "GitHub", href: "https://github.com/ibrarli/apen-ui" },
-];
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+}
 
-// Provide the exact prop types directly to the generic dynamic initializer layer
-const DynamicNavbar = dynamic<NavbarProps>(
-  () =>
-    registry["navbar"].component().then((module: any) => {
-      return module.Navbar || module.default;
-    }),
-  {
-    loading: () => <div className="h-16 w-full bg-zinc-950 border-b border-zinc-900" />,
-    ssr: true,
-  }
-);
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
-    >
-      <body className="min-h-full bg-zinc-950 text-zinc-50 flex flex-col antialiased">
-        {/* Global Registry-Driven Floating Header */}
-        <DynamicNavbar 
-          items={mainNavigation}
-          theme="glass" 
-          layout="center-nav"
-          logoText="Apen UI"
-          actionButtonText="Sign Up"
-        />
-        
-        {/* Page Content Body */}
-        <main className="flex-1 w-full">
-          {children}
-        </main>
-      </body>
+    <html lang="en" suppressHydrationWarning className={`${quicksand.variable} ${jakarta.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-svh">{children}</body>
     </html>
-  );
+  )
 }

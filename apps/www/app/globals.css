@@ -1,12 +1,49 @@
 @import "tailwindcss";
+@import "../../../packages/ui/src/styles/apen.css";
 
-/* Fix: Explicitly tell Tailwind v4 to scan your external monorepo UI workspace */
-@source "../../packages/apen-ui/src";
+@source "../../../packages/ui/src";
 
-/* Optional: Define your custom theme tokens if they aren't configured yet */
-@theme {
-  --color-primary: #3b82f6;
-  --color-primary-foreground: #ffffff;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #ffffff;
+/* Docs-only styles. Everything a user's app needs lives in apen.css. */
+
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: transparent !important;
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+}
+
+.shiki {
+  counter-reset: line;
+}
+
+.shiki code {
+  display: grid;
+}
+
+.prose-docs h2 {
+  @apply mt-12 mb-4 scroll-m-24 text-2xl font-bold tracking-tight;
+}
+
+.prose-docs h3 {
+  @apply mt-8 mb-3 scroll-m-24 text-lg font-bold tracking-tight;
+}
+
+.prose-docs p {
+  @apply leading-7 text-muted-foreground [&:not(:first-child)]:mt-4;
+}
+
+.prose-docs ul {
+  @apply mt-4 ml-5 list-disc space-y-2 text-muted-foreground;
+}
+
+.prose-docs a:not([data-slot]) {
+  @apply font-semibold text-primary underline-offset-4 hover:underline;
+}
+
+.prose-docs :not(pre) > code {
+  @apply rounded-md bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-foreground;
 }
