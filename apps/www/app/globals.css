@@ -44,6 +44,10 @@
   @apply font-semibold text-primary underline-offset-4 hover:underline;
 }
 
-.prose-docs :not(pre) > code {
+.prose-docs :not(pre) > code:not([data-raw]) {
   @apply rounded-md bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-foreground;
+}
+
+html {
+  @apply scrollbar-soft;
 }

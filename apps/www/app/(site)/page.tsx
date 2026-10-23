@@ -53,8 +53,8 @@ export default function HomePage() {
   const components = getComponents()
 
   return (
-    <main className="px-4">
-      <section className="mx-auto flex max-w-4xl flex-col items-center gap-6 pt-20 pb-12 text-center sm:pt-28">
+    <main className="px-4 md:px-6">
+      <section className="flex flex-col items-center gap-6 pt-20 pb-12 text-center sm:pt-28">
         <Badge variant="default" className="px-3 py-1">
           <Sparkle /> {components.length} components · Tailwind v4 · React 19
         </Badge>
@@ -79,7 +79,7 @@ export default function HomePage() {
       </section>
 
       {/* A live preview built from the components themselves. */}
-      <section className="mx-auto grid max-w-6xl gap-4 pb-24 lg:grid-cols-3">
+      <section className="grid gap-4 pb-24 lg:grid-cols-3">
         <StatCard>
           <StatCardHeader>
             <StatCardLabel>Monthly revenue</StatCardLabel>
@@ -155,10 +155,10 @@ export default function HomePage() {
         </Card>
       </section>
 
-      <section className="mx-auto max-w-6xl pb-24">
+      <section className="pb-24">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col gap-3 rounded-3xl bg-card p-6">
+            <div key={feature.title} className="flex flex-col gap-3 rounded-3xl bg-card p-6 shadow-soft">
               <span className="flex size-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                 <feature.icon className="size-5" />
               </span>
@@ -169,10 +169,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl pb-24">
+      <section className="pb-24">
         <div className="flex flex-col items-center gap-6 rounded-3xl bg-brand-gradient px-6 py-14 text-center text-white">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Every component, one command away</h2>
-          <div className="flex max-w-3xl flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {components.map((item) => (
               <Link
                 key={item.name}

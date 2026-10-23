@@ -40,7 +40,7 @@ export function CommandTabs({ args, className }: { args: string; className?: str
         <span aria-hidden="true" className="text-brand-orange">
           $
         </span>
-        <code className="flex-1 overflow-x-auto whitespace-nowrap">{command}</code>
+        <code data-raw className="scrollbar-soft flex-1 overflow-x-auto whitespace-nowrap">{command}</code>
         <CopyButton value={command} className="bg-white/10 text-white hover:bg-white/20 hover:text-white" />
       </div>
     </div>

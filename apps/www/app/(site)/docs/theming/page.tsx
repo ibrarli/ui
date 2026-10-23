@@ -6,11 +6,11 @@ export const metadata = { title: "Theming" }
 const tokens = [
   ["--primary", "Main actions, active states and focus rings", "#f15a29"],
   ["--brand-orange / --brand-blue", "The two stops of the Apen gradient", "#f15a29 → #00aeef"],
-  ["--background / --foreground", "Page colour and default text", "#ffffff / #111827"],
-  ["--card", "Tonal surface behind cards, stat cards and alerts", "#f8f9fa"],
-  ["--muted / --muted-foreground", "Quiet fills and secondary text", "#f1f3f4 / #5f6368"],
-  ["--accent", "Hover background for ghost buttons and menu items", "#f1f3f4"],
-  ["--border / --input", "Hairlines and form control borders", "#e8eaed / #dadce0"],
+  ["--background / --foreground", "Page colour and default text", "#f4f5f7 / #111827"],
+  ["--card", "Surface for cards, tables, sidebar and form fields", "#ffffff"],
+  ["--muted / --muted-foreground", "Quiet fills and secondary text", "#eef0f2 / #5f6368"],
+  ["--accent", "Hover background for ghost buttons and menu items", "#eef0f2"],
+  ["--border / --input", "Separators and form field borders", "#e3e6ea / #d5d9de"],
   ["--success / --warning / --destructive / --info", "Status colours for badges, alerts and trends", ""],
   ["--sidebar*", "Sidebar surface and hover", ""],
   ["--radius", "Base radius. Cards use 2×, menus 1.5×", "1rem"],
@@ -42,7 +42,7 @@ export default function ThemingPage() {
       </p>
 
       <h2>Tokens</h2>
-      <div className="mt-4 overflow-x-auto rounded-3xl bg-card">
+      <div className="mt-4 scrollbar-soft overflow-x-auto rounded-3xl bg-card shadow-soft">
         <table className="w-full text-sm">
           <thead className="bg-muted/60 text-left text-xs font-semibold text-muted-foreground uppercase">
             <tr>

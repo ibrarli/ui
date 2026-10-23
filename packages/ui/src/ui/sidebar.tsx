@@ -157,7 +157,7 @@ function Sidebar({
           "group/sidebar fixed inset-y-0 left-0 z-50 flex w-(--sidebar-width) shrink-0 -translate-x-full flex-col rounded-r-3xl bg-sidebar text-sidebar-foreground shadow-2xl transition-[width,translate] duration-300 ease-out data-[mobile-open=true]:translate-x-0",
           "md:sticky md:z-auto md:translate-x-0 md:shadow-none md:data-[collapsed=true]:w-(--sidebar-width-collapsed)",
           variant === "floating" &&
-            "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl",
+            "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl md:shadow-soft",
           variant === "flush" &&
             "md:top-0 md:h-svh md:rounded-none",
           className
@@ -185,7 +185,7 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto p-3",
+        "scrollbar-soft flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto p-3",
         className
       )}
       {...props}

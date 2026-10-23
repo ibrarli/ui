@@ -20,8 +20,8 @@ export default function DocsLayout({ children }: Readonly<{ children: React.Reac
   ]
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl gap-10 px-4 py-10">
-      <aside className="sticky top-24 hidden h-[calc(100svh-7rem)] w-56 shrink-0 overflow-y-auto pb-6 lg:block">
+    <div className="flex w-full gap-10 px-4 py-10 md:px-6">
+      <aside className="scrollbar-soft sticky top-24 hidden h-[calc(100svh-7rem)] w-56 shrink-0 overflow-y-auto pr-2 pb-6 lg:block">
         <DocsNav groups={groups} />
       </aside>
       <main className="prose-docs min-w-0 flex-1 pb-16">{children}</main>

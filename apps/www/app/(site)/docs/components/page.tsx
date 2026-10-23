@@ -23,7 +23,7 @@ export default function ComponentsPage() {
                 key={item.name}
                 href={`/docs/components/${item.name}`}
                 data-slot="component-link"
-                className="group flex flex-col gap-1 rounded-3xl bg-card p-5 transition-colors hover:bg-primary/8"
+                className="group flex flex-col gap-1 rounded-3xl bg-card p-5 shadow-soft transition-colors hover:bg-primary/8"
               >
                 <span className="font-heading font-bold group-hover:text-primary">{item.title}</span>
                 <span className="text-sm text-muted-foreground">{item.description}</span>

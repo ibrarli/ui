@@ -40,7 +40,7 @@ function Navbar({
         data-variant={variant}
         className={cn(
           "sticky top-0 z-40 w-full",
-          variant === "floating" && "px-4 pt-4",
+          variant === "floating" && "px-4 pt-4 md:px-6",
           variant === "bar" &&
             "bg-background/80 backdrop-blur-xl",
           className
@@ -49,9 +49,9 @@ function Navbar({
       >
         <nav
           className={cn(
-            "relative mx-auto flex w-full max-w-6xl items-center justify-between gap-4",
+            "relative flex w-full items-center justify-between gap-4",
             variant === "floating" &&
-              "h-14 rounded-full bg-card/80 pr-2 pl-5 shadow-sm backdrop-blur-xl",
+              "h-14 rounded-full bg-card/85 pr-2 pl-5 shadow-soft backdrop-blur-xl",
             variant === "bar" && "h-16 px-6"
           )}
         >

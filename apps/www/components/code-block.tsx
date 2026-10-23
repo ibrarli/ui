@@ -27,7 +27,7 @@ export async function CodeBlock({
       )}
       <CopyButton value={code} className="absolute top-2.5 right-2.5" />
       <div
-        className="max-h-[32rem] overflow-auto p-5 pr-14 font-mono text-[13px] leading-6"
+        className="scrollbar-soft max-h-[32rem] overflow-auto p-5 pr-14 font-mono text-[13px] leading-6"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>
