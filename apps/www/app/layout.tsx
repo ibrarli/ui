@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Plus_Jakarta_Sans, Quicksand } from "next/font/google"
+import Script from "next/script"
 
 import { siteConfig } from "@/lib/site"
 import { themeScript } from "@/components/theme-toggle"
@@ -41,10 +42,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${quicksand.variable} ${jakarta.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body className="min-h-svh">{children}</body>
+      <body className="min-h-svh">
+        <Script id="theme" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
+        {children}
+      </body>
     </html>
   )
 }
