@@ -42,7 +42,7 @@ function Navbar({
           "sticky top-0 z-40 w-full",
           variant === "floating" && "px-4 pt-4",
           variant === "bar" &&
-            "border-b border-border/60 bg-background/80 backdrop-blur-xl",
+            "bg-background/80 backdrop-blur-xl",
           className
         )}
         {...props}
@@ -51,7 +51,7 @@ function Navbar({
           className={cn(
             "relative mx-auto flex w-full max-w-6xl items-center justify-between gap-4",
             variant === "floating" &&
-              "h-14 rounded-full border border-border/60 bg-background/80 pr-2 pl-5 shadow-sm backdrop-blur-xl",
+              "h-14 rounded-full bg-card/80 pr-2 pl-5 shadow-sm backdrop-blur-xl",
             variant === "bar" && "h-16 px-6"
           )}
         >
@@ -166,7 +166,7 @@ function NavbarMobileMenu({
         if ((event.target as HTMLElement).closest("a")) setOpen(false)
       }}
       className={cn(
-        "absolute inset-x-0 top-full mt-2 flex flex-col gap-1 rounded-3xl border border-border/60 bg-popover p-2 text-popover-foreground shadow-xl animate-in fade-in-0 slide-in-from-top-2 md:hidden [&_[data-slot=navbar-link]]:w-full",
+        "absolute inset-x-0 top-full mt-2 flex flex-col gap-1 rounded-3xl bg-popover p-2 text-popover-foreground shadow-xl animate-in fade-in-0 slide-in-from-top-2 md:hidden [&_[data-slot=navbar-link]]:w-full",
         className
       )}
       {...props}

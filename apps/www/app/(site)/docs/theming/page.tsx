@@ -12,7 +12,7 @@ const tokens = [
   ["--accent", "Hover background for ghost buttons and menu items", "#f1f3f4"],
   ["--border / --input", "Hairlines and form control borders", "#e8eaed / #dadce0"],
   ["--success / --warning / --destructive / --info", "Status colours for badges, alerts and trends", ""],
-  ["--sidebar*", "Sidebar surface, hover and border", ""],
+  ["--sidebar*", "Sidebar surface and hover", ""],
   ["--radius", "Base radius. Cards use 2×, menus 1.5×", "1rem"],
 ]
 
@@ -42,7 +42,7 @@ export default function ThemingPage() {
       </p>
 
       <h2>Tokens</h2>
-      <div className="mt-4 overflow-x-auto rounded-3xl border border-border/60">
+      <div className="mt-4 overflow-x-auto rounded-3xl bg-card">
         <table className="w-full text-sm">
           <thead className="bg-muted/60 text-left text-xs font-semibold text-muted-foreground uppercase">
             <tr>
@@ -53,7 +53,7 @@ export default function ThemingPage() {
           </thead>
           <tbody>
             {tokens.map(([name, use, value]) => (
-              <tr key={name} className="border-t border-border/60">
+              <tr key={name}>
                 <td className="px-4 py-3 font-mono text-xs whitespace-nowrap">{name}</td>
                 <td className="px-4 py-3 text-muted-foreground">{use}</td>
                 <td className="px-4 py-3 font-mono text-xs whitespace-nowrap text-muted-foreground">{value}</td>

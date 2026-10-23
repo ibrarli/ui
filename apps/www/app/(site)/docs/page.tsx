@@ -19,7 +19,7 @@ export default function DocsPage() {
       </p>
       <p>
         What makes it Apen: softer, rounder shapes (pill buttons and inputs, <code>rounded-3xl</code> cards), tonal
-        surfaces instead of heavy borders, the orange-to-blue Apen gradient, Quicksand headings and{" "}
+        surfaces instead of borders, the orange-to-blue Apen gradient, Quicksand headings and{" "}
         <a href="https://www.npmjs.com/package/apen-icons">apen-icons</a>. It also ships the blocks a dashboard
         needs out of the box: a collapsible sidebar, a floating navbar, stat cards and data tables.
       </p>

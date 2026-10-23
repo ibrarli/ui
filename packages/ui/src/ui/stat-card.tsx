@@ -9,7 +9,7 @@ function StatCard({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="stat-card"
       className={cn(
-        "flex flex-col gap-4 rounded-3xl border border-border/60 bg-card p-6 text-card-foreground",
+        "flex flex-col gap-4 rounded-3xl bg-card p-6 text-card-foreground",
         className
       )}
       {...props}

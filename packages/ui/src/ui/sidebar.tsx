@@ -157,9 +157,9 @@ function Sidebar({
           "group/sidebar fixed inset-y-0 left-0 z-50 flex w-(--sidebar-width) shrink-0 -translate-x-full flex-col rounded-r-3xl bg-sidebar text-sidebar-foreground shadow-2xl transition-[width,translate] duration-300 ease-out data-[mobile-open=true]:translate-x-0",
           "md:sticky md:z-auto md:translate-x-0 md:shadow-none md:data-[collapsed=true]:w-(--sidebar-width-collapsed)",
           variant === "floating" &&
-            "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl md:border md:border-sidebar-border",
+            "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl",
           variant === "flush" &&
-            "md:top-0 md:h-svh md:rounded-none md:border-r md:border-sidebar-border",
+            "md:top-0 md:h-svh md:rounded-none",
           className
         )}
         {...props}

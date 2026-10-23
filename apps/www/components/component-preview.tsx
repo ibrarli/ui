@@ -23,7 +23,7 @@ export function ComponentPreview({
       <TabsContent value="preview">
         <div
           className={cn(
-            "flex min-h-72 w-full items-center justify-center overflow-hidden rounded-3xl border border-border/60 bg-background bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px]",
+            "flex min-h-72 w-full items-center justify-center overflow-hidden rounded-3xl bg-card bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px]",
             wide ? "p-0" : "p-8 sm:p-12"
           )}
         >

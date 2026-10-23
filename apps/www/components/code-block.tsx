@@ -21,9 +21,9 @@ export async function CodeBlock({
   })
 
   return (
-    <div className={cn("group relative overflow-hidden rounded-2xl border border-border/60 bg-card", className)}>
+    <div className={cn("group relative overflow-hidden rounded-2xl bg-card", className)}>
       {title && (
-        <div className="border-b border-border/60 px-5 py-2.5 font-mono text-xs text-muted-foreground">{title}</div>
+        <div className="px-5 pt-3 -mb-3 font-mono text-xs text-muted-foreground">{title}</div>
       )}
       <CopyButton value={code} className="absolute top-2.5 right-2.5" />
       <div
