@@ -1,3 +1,5 @@
 packages:
   - "apps/*"
   - "packages/*"
+patchedDependencies:
+  apen-icons@1.1.3: patches/apen-icons@1.1.3.patch

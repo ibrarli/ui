@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  apen-icons@1.1.3:
+    hash: 4998488824f5b0af3e610295102f8799ee077026870793fb0917bbb38e1da9ca
+    path: patches/apen-icons@1.1.3.patch
+
 importers:
 
   .: {}
@@ -12,7 +17,7 @@ importers:
     dependencies:
       apen-icons:
         specifier: ^1.1.3
-        version: 1.1.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 1.1.3(patch_hash=4998488824f5b0af3e610295102f8799ee077026870793fb0917bbb38e1da9ca)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -98,7 +103,7 @@ importers:
     dependencies:
       apen-icons:
         specifier: ^1.1.3
-        version: 1.1.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 1.1.3(patch_hash=4998488824f5b0af3e610295102f8799ee077026870793fb0917bbb38e1da9ca)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -5358,7 +5363,7 @@ snapshots:
 
   any-promise@1.3.0: {}
 
-  apen-icons@1.1.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  apen-icons@1.1.3(patch_hash=4998488824f5b0af3e610295102f8799ee077026870793fb0917bbb38e1da9ca)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
