@@ -31,8 +31,11 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <Link href="/" className="flex h-10 items-center px-2 md:group-data-[collapsed=true]/sidebar:justify-center md:group-data-[collapsed=true]/sidebar:px-0 md:group-data-[collapsed=true]/sidebar:[&_span_span]:hidden">
-          <Logo />
+        <Link href="/" className="flex h-10 items-center px-3 md:group-data-[collapsed=true]/sidebar:justify-center md:group-data-[collapsed=true]/sidebar:px-0">
+          <Logo className="md:group-data-[collapsed=true]/sidebar:hidden" />
+          <span className="hidden font-heading text-lg font-bold text-brand-gradient md:group-data-[collapsed=true]/sidebar:inline">
+            UI
+          </span>
         </Link>
       </SidebarHeader>
       <SidebarContent>
