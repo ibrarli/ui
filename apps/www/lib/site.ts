@@ -13,5 +13,6 @@ export const siteConfig = {
 export const mainNav = [
   { href: "/docs", label: "Docs" },
   { href: "/docs/components", label: "Components" },
+  { href: "/themes", label: "Themes" },
   { href: "/dashboard", label: "Dashboard" },
 ]

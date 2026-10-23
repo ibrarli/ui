@@ -152,7 +152,11 @@ The registry ships inside the CLI, so it works offline and always matches the CL
 
 ## Theming
 
-All colours and radii are CSS variables with shadcn/ui names, so existing themes and know-how carry over. Override any of them after the theme block:
+All colours, radii and fonts are CSS variables with shadcn/ui names, so existing themes and know-how carry over.
+
+The easiest way to make your own theme is the **theme customizer** on the docs site (`/themes`): pick a primary colour, the gradient, a neutral palette (Apen gray, Slate, Zinc, Stone), the radius and the heading and body fonts. The page updates live in light and dark mode, then you copy the generated CSS and the `next/font` setup.
+
+Or override variables by hand after the theme block:
 
 ```css
 :root {
@@ -171,6 +175,7 @@ All colours and radii are CSS variables with shadcn/ui names, so existing themes
 | `--success`, `--warning`, `--destructive`, `--info` | status colours |
 | `--sidebar*` | sidebar surface, hover and border |
 | `--radius` | base radius; cards use 2×, menus 1.5× |
+| `--font-body`, `--font-display` | text and heading fonts (default Plus Jakarta Sans and Quicksand) |
 
 Dark mode uses a `.dark` class on `<html>`.
 

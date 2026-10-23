@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { CodeBlock } from "@/components/code-block"
 import { PageHeader } from "../page-header"
 
@@ -14,6 +16,7 @@ const tokens = [
   ["--success / --warning / --destructive / --info", "Status colours for badges, alerts and trends", ""],
   ["--sidebar*", "Sidebar surface and hover", ""],
   ["--radius", "Base radius. Cards use 2×, menus 1.5×", "1rem"],
+  ["--font-body / --font-display", "Text and heading fonts", "Plus Jakarta Sans / Quicksand"],
 ]
 
 const override = `:root {
@@ -64,7 +67,10 @@ export default function ThemingPage() {
       </div>
 
       <h2>Overriding</h2>
-      <p>Redefine any variable after the theme block in your global CSS.</p>
+      <p>
+        Redefine any variable after the theme block in your global CSS. The quickest way is the{" "}
+        <Link href="/themes">theme customizer</Link>: pick colours, radius and fonts, preview them live and copy the CSS.
+      </p>
       <CodeBlock code={override} lang="css" title="app/globals.css" className="mt-4" />
 
       <h2>Brand utilities</h2>

@@ -6,6 +6,10 @@
 :root {
   --radius: 1rem;
 
+  /* Fonts: works with next/font variables, or set a family name directly. */
+  --font-body: var(--font-jakarta, "Plus Jakarta Sans");
+  --font-display: var(--font-quicksand, "Quicksand");
+
   --brand-orange: #f15a29;
   --brand-blue: #00aeef;
 
@@ -69,8 +73,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-jakarta, "Plus Jakarta Sans"), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-quicksand, "Quicksand"), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: calc(var(--radius) * 0.75);

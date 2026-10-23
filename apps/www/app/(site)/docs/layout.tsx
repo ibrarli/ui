@@ -9,6 +9,7 @@ export default function DocsLayout({ children }: Readonly<{ children: React.Reac
         { href: "/docs", label: "Introduction" },
         { href: "/docs/installation", label: "Installation" },
         { href: "/docs/theming", label: "Theming" },
+        { href: "/themes", label: "Theme customizer" },
         { href: "/docs/cli", label: "CLI" },
         { href: "/docs/components", label: "All components" },
       ],
