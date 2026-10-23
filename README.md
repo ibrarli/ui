@@ -7,8 +7,8 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/apen-ui"><img alt="npm version" src="https://img.shields.io/npm/v/apen-ui?color=cb3837&logo=npm"></a>
   <a href="https://www.npmjs.com/package/apen-ui"><img alt="npm downloads" src="https://img.shields.io/npm/dm/apen-ui"></a>
-  <img alt="node: >=20" src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white">
-  <a href="LICENSE"><img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <img alt="node 20 or newer" src="https://img.shields.io/badge/node-20%2B-339933?logo=nodedotjs&amp;logoColor=white">
+  <a href="LICENSE"><img alt="license MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
 </p>
 
 <p align="center">
