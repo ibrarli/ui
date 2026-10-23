@@ -5,7 +5,7 @@ import { PageHeader } from "../page-header"
 export const metadata = { title: "CLI" }
 
 const config = `{
-  "$schema": "https://raw.githubusercontent.com/ibrarli/apen-ui/main/packages/cli/schema.json",
+  "$schema": "https://cdn.jsdelivr.net/npm/apen-ui@latest/schema.json",
   "tsx": true,
   "rsc": true,
   "css": "app/globals.css",

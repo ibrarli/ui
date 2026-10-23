@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Apen UI by Apen Apps" src="https://raw.githubusercontent.com/ibrarli/apen-ui/main/.github/assets/banner.svg" width="100%">
+  <img alt="Apen UI by Apen Apps" src="https://cdn.jsdelivr.net/npm/apen-ui@latest/banner.svg" width="100%">
 </p>
 
 # apen-ui

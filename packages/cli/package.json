@@ -9,7 +9,8 @@
   "files": [
     "dist",
     "registry",
-    "schema.json"
+    "schema.json",
+    "banner.svg"
   ],
   "scripts": {
     "build": "node ../ui/scripts/build-registry.mjs && tsup",

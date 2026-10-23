@@ -1,14 +1,14 @@
 <p align="center">
   <a href="https://github.com/ibrarli/apen-ui">
-    <img alt="Apen UI by Apen Apps: rounded, dashboard-ready React components" src="https://raw.githubusercontent.com/ibrarli/apen-ui/main/.github/assets/banner.svg" width="100%">
+    <img alt="Apen UI by Apen Apps: rounded, dashboard-ready React components" src=".github/assets/banner.svg" width="100%">
   </a>
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/apen-ui"><img alt="npm version" src="https://img.shields.io/npm/v/apen-ui?color=cb3837&logo=npm"></a>
   <a href="https://www.npmjs.com/package/apen-ui"><img alt="npm downloads" src="https://img.shields.io/npm/dm/apen-ui"></a>
-  <img alt="node" src="https://img.shields.io/node/v/apen-ui">
-  <a href="LICENSE"><img alt="license" src="https://img.shields.io/github/license/ibrarli/apen-ui"></a>
+  <img alt="node: >=20" src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white">
+  <a href="LICENSE"><img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
 </p>
 
 <p align="center">

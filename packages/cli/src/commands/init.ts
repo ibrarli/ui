@@ -37,7 +37,7 @@ export async function init(options: InitOptions) {
 
   const { prefix } = detectAlias(cwd)
   const defaults: Config = {
-    $schema: "https://raw.githubusercontent.com/ibrarli/apen-ui/main/packages/cli/schema.json",
+    $schema: "https://cdn.jsdelivr.net/npm/apen-ui@latest/schema.json",
     tsx: fs.existsSync(path.join(cwd, "tsconfig.json")),
     rsc: fs.existsSync(path.join(cwd, "next.config.ts")) || fs.existsSync(path.join(cwd, "next.config.js")) || fs.existsSync(path.join(cwd, "next.config.mjs")),
     css: detectCssFile(cwd),
