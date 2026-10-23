@@ -7,7 +7,7 @@ export default function TooltipDemo() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="secondary" size="icon" aria-label="Add">
+        <Button variant="outline" size="icon" aria-label="Add">
           <Plus />
         </Button>
       </TooltipTrigger>

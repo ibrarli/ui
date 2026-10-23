@@ -12,7 +12,7 @@ export default function ButtonDemo() {
         Get started <ArrowRight />
       </Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="secondary">Outline</Button>
+      <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="destructive" size="icon" aria-label="Delete">
         <Trash />

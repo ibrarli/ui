@@ -16,7 +16,7 @@ export default function DialogDemo() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Invite member</Button>
+        <Button variant="outline">Invite member</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
