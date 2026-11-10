@@ -10,6 +10,10 @@
     "build": "pnpm registry:build && pnpm --filter apen-ui build && pnpm --filter www build",
     "registry:build": "node packages/ui/scripts/build-registry.mjs",
     "typecheck": "pnpm -r typecheck",
-    "lint": "pnpm --filter www lint"
+    "lint": "pnpm --filter www lint",
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
   }
 }

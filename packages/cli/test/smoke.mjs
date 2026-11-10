@@ -59,7 +59,10 @@ try {
 
   run("add", "--all")
   const count = fs.readdirSync(path.join(dir, "src/components/ui")).length
-  assert.equal(count, 22, "--all writes every component")
+  assert.equal(count, 25, "--all writes every component")
+  for (const name of ["accordion", "breadcrumb", "pagination"]) {
+    assert.ok(fs.existsSync(path.join(dir, `src/components/ui/${name}.tsx`)), `${name}.tsx installed`)
+  }
 
   fs.writeFileSync(path.join(jsDir, "package.json"), JSON.stringify({ name: "smoke-js", type: "module" }))
   fs.writeFileSync(

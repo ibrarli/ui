@@ -13,7 +13,7 @@ const links = ["Overview", "Customers", "Reports"]
 
 export default function NavbarDemo() {
   return (
-    <div className="w-full py-6">
+    <div className="w-full py-6 pb-48 md:pb-6">
       <Navbar className="static">
         <NavbarBrand href="#">Acme</NavbarBrand>
         <NavbarContent>

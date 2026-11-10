@@ -34,6 +34,7 @@ export const registry = [
   { name: "skeleton", category: "display", description: "Placeholder shown while content loads." },
   { name: "progress", category: "display", description: "Progress bar filled with the brand gradient." },
   { name: "separator", category: "display", description: "Visual divider between content." },
+  { name: "accordion", category: "display", description: "Expandable sections with keyboard navigation and smooth transitions." },
 
   // Feedback & overlays
   { name: "alert", category: "feedback", description: "Callout for info, success, warning and errors." },
@@ -41,6 +42,8 @@ export const registry = [
   { name: "dialog", category: "overlay", description: "Modal window over a blurred backdrop." },
   { name: "dropdown-menu", category: "overlay", description: "Menu of actions opened from a trigger." },
   { name: "tabs", category: "navigation", description: "Switch between views with pill tabs." },
+  { name: "breadcrumb", category: "navigation", description: "Responsive navigation trail with accessible current-page labels." },
+  { name: "pagination", category: "navigation", description: "Pill-shaped page controls with active and disabled states." },
 
   // Dashboard
   { name: "navbar", category: "dashboard", description: "Floating pill or full-width top navigation." },

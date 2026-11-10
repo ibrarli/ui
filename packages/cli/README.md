@@ -43,7 +43,7 @@ Prints every component, grouped by category.
 
 ## Components
 
-`sidebar` `navbar` `stat-card` `button` `input` `textarea` `label` `checkbox` `switch` `select` `card` `table` `badge` `avatar` `skeleton` `progress` `separator` `alert` `tooltip` `dialog` `dropdown-menu` `tabs`
+`sidebar` `navbar` `stat-card` `button` `input` `textarea` `label` `checkbox` `switch` `select` `card` `table` `badge` `avatar` `skeleton` `progress` `separator` `accordion` `alert` `tooltip` `dialog` `dropdown-menu` `tabs` `breadcrumb` `pagination`
 
 ## Requirements
 

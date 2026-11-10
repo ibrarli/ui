@@ -5,9 +5,9 @@ export default function ProgressDemo() {
     <div className="grid w-full max-w-sm gap-2">
       <div className="flex justify-between text-sm">
         <span className="font-semibold">Storage</span>
-        <span className="text-muted-foreground">68 of 100 GB</span>
+        <span className="text-muted-foreground">136 of 200 GB</span>
       </div>
-      <Progress value={68} />
+      <Progress value={136} max={200} aria-label="Storage" />
     </div>
   )
 }

@@ -77,10 +77,10 @@ The theme uses **Quicksand** for headings and **Plus Jakarta Sans** for text. Lo
 | --- | --- |
 | Dashboard | `sidebar`, `navbar`, `stat-card` |
 | Forms | `button`, `input`, `textarea`, `label`, `checkbox`, `switch`, `select` |
-| Display | `card`, `table`, `badge`, `avatar`, `skeleton`, `progress`, `separator` |
+| Display | `card`, `table`, `badge`, `avatar`, `skeleton`, `progress`, `separator`, `accordion` |
 | Feedback | `alert`, `tooltip` |
 | Overlays | `dialog`, `dropdown-menu` |
-| Navigation | `tabs` |
+| Navigation | `tabs`, `breadcrumb`, `pagination` |
 
 Run `npx apen-ui list` to see them in the terminal, or `npx apen-ui add --all` to add everything.
 
@@ -204,6 +204,8 @@ pnpm install
 pnpm dev                       # docs site on http://localhost:3000
 pnpm registry:build            # rebuild the JSON registry
 pnpm --filter apen-ui test     # build the CLI and run its smoke test
+pnpm exec playwright install chromium --only-shell # first browser test run
+pnpm test:browser             # responsive layouts and keyboard interactions
 pnpm build                     # registry, CLI and docs
 ```
 

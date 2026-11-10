@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Slot } from "radix-ui"
-import { MenuHamburger } from "apen-icons"
+import { Dialog as DialogPrimitive, Slot } from "radix-ui"
+import { MenuHamburger, X } from "apen-icons"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -15,9 +15,10 @@ import {
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_COLLAPSED = "4.75rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
-const MOBILE_QUERY = "(max-width: 767px)"
+const MOBILE_QUERY = "(width < 48rem)"
 
 type SidebarContextValue = {
+  sidebarId: string
   collapsed: boolean
   setCollapsed: (collapsed: boolean) => void
   openMobile: boolean
@@ -61,6 +62,7 @@ function SidebarProvider({
   collapsed?: boolean
   onCollapsedChange?: (collapsed: boolean) => void
 }) {
+  const sidebarId = React.useId()
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
   const [internalCollapsed, setInternalCollapsed] =
@@ -81,15 +83,23 @@ function SidebarProvider({
   }, [isMobile, collapsed, setCollapsed])
 
   React.useEffect(() => {
+    if (!isMobile) setOpenMobile(false)
+  }, [isMobile])
+
+  React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target
+      const isEditing = target instanceof HTMLElement &&
+        (target.isContentEditable || !!target.closest("input, textarea, select"))
       if (
-        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
+        !event.defaultPrevented &&
+        !isEditing &&
+        event.key.toLowerCase() === SIDEBAR_KEYBOARD_SHORTCUT &&
         (event.metaKey || event.ctrlKey)
       ) {
         event.preventDefault()
         toggleSidebar()
       }
-      if (event.key === "Escape") setOpenMobile(false)
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
@@ -97,6 +107,7 @@ function SidebarProvider({
 
   const value = React.useMemo<SidebarContextValue>(
     () => ({
+      sidebarId,
       collapsed,
       setCollapsed,
       openMobile,
@@ -104,7 +115,7 @@ function SidebarProvider({
       isMobile,
       toggleSidebar,
     }),
-    [collapsed, setCollapsed, openMobile, isMobile, toggleSidebar]
+    [sidebarId, collapsed, setCollapsed, openMobile, isMobile, toggleSidebar]
   )
 
   return (
@@ -118,7 +129,7 @@ function SidebarProvider({
             ...style,
           } as React.CSSProperties
         }
-        className={cn("flex min-h-svh w-full", className)}
+        className={cn("flex min-h-svh w-full min-w-0", className)}
         {...props}
       >
         {children}
@@ -130,43 +141,84 @@ function SidebarProvider({
 function Sidebar({
   variant = "floating",
   className,
+  style,
   children,
   ...props
 }: React.ComponentProps<"aside"> & {
   variant?: "floating" | "flush"
 }) {
-  const { collapsed, openMobile, setOpenMobile } = useSidebar()
+  const { sidebarId, collapsed, isMobile, openMobile, setOpenMobile } = useSidebar()
+  const restoreFocusRef = React.useRef<HTMLElement | null>(null)
+
+  if (isMobile) {
+    return (
+      <DialogPrimitive.Root open={openMobile} onOpenChange={setOpenMobile}>
+        <DialogPrimitive.Portal>
+          <DialogPrimitive.Overlay
+            data-slot="sidebar-overlay"
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"
+          />
+          <DialogPrimitive.Content
+            asChild
+            aria-describedby={undefined}
+            onOpenAutoFocus={() => {
+              restoreFocusRef.current = document.activeElement instanceof HTMLElement
+                ? document.activeElement
+                : null
+            }}
+            onCloseAutoFocus={(event) => {
+              event.preventDefault()
+              restoreFocusRef.current?.focus()
+            }}
+          >
+            <aside
+              id={sidebarId}
+              data-slot="sidebar"
+              data-variant={variant}
+              data-collapsed={false}
+              data-mobile-open={openMobile}
+              {...props}
+              style={{ "--sidebar-width": SIDEBAR_WIDTH, ...style } as React.CSSProperties}
+              className={cn(
+                "group/sidebar fixed inset-y-0 left-0 z-50 flex h-dvh w-(--sidebar-width) max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-r-3xl bg-sidebar text-sidebar-foreground shadow-2xl outline-none data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left motion-reduce:animate-none",
+                className
+              )}
+            >
+              <DialogPrimitive.Title data-slot="sidebar-title" className="sr-only">Sidebar navigation</DialogPrimitive.Title>
+              {children}
+              <DialogPrimitive.Close
+                type="button"
+                aria-label="Close sidebar"
+                className="absolute top-4 right-3 inline-flex size-8 items-center justify-center rounded-full bg-sidebar text-muted-foreground outline-none hover:bg-sidebar-accent focus-visible:ring-4 focus-visible:ring-ring/25 [&_svg]:size-4"
+              >
+                <X />
+              </DialogPrimitive.Close>
+            </aside>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
+    )
+  }
 
   return (
-    <>
-      <div
-        data-slot="sidebar-overlay"
-        aria-hidden="true"
-        onClick={() => setOpenMobile(false)}
-        className={cn(
-          "fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity md:hidden",
-          openMobile ? "opacity-100" : "pointer-events-none opacity-0"
-        )}
-      />
-      <aside
-        data-slot="sidebar"
-        data-variant={variant}
-        data-collapsed={collapsed}
-        data-mobile-open={openMobile}
-        className={cn(
-          "group/sidebar fixed inset-y-0 left-0 z-50 flex w-(--sidebar-width) shrink-0 -translate-x-full flex-col rounded-r-3xl bg-sidebar text-sidebar-foreground shadow-2xl transition-[width,translate] duration-300 ease-out data-[mobile-open=true]:translate-x-0",
-          "md:sticky md:z-auto md:translate-x-0 md:shadow-none md:data-[collapsed=true]:w-(--sidebar-width-collapsed)",
-          variant === "floating" &&
-            "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl md:shadow-soft",
-          variant === "flush" &&
-            "md:top-0 md:h-svh md:rounded-none",
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </aside>
-    </>
+    <aside
+      id={sidebarId}
+      data-slot="sidebar"
+      data-variant={variant}
+      data-collapsed={collapsed}
+      data-mobile-open={openMobile}
+      style={style}
+      className={cn(
+        "group/sidebar sticky hidden w-(--sidebar-width) shrink-0 self-start flex-col overflow-hidden bg-sidebar text-sidebar-foreground transition-[width] duration-200 ease-out motion-reduce:transition-none md:flex md:data-[collapsed=true]:w-(--sidebar-width-collapsed)",
+        variant === "floating" &&
+          "md:top-3 md:m-3 md:mr-0 md:h-[calc(100svh-1.5rem)] md:rounded-3xl md:shadow-soft",
+        variant === "flush" && "md:top-0 md:h-svh md:rounded-none",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </aside>
   )
 }
 
@@ -174,7 +226,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-header"
-      className={cn("flex flex-col gap-2 p-3", className)}
+      className={cn("flex min-w-0 shrink-0 flex-col gap-2 p-3 pr-12 md:pr-3", className)}
       {...props}
     />
   )
@@ -185,7 +237,7 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-content"
       className={cn(
-        "scrollbar-soft flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto p-3",
+        "scrollbar-soft flex min-h-0 min-w-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto p-3",
         className
       )}
       {...props}
@@ -197,7 +249,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-footer"
-      className={cn("flex flex-col gap-2 p-3", className)}
+      className={cn("flex min-w-0 shrink-0 flex-col gap-2 p-3", className)}
       {...props}
     />
   )
@@ -207,7 +259,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-group"
-      className={cn("flex flex-col gap-1", className)}
+      className={cn("flex min-w-0 flex-col gap-1", className)}
       {...props}
     />
   )
@@ -233,7 +285,7 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   return (
     <ul
       data-slot="sidebar-menu"
-      className={cn("flex flex-col gap-1", className)}
+      className={cn("flex min-w-0 flex-col gap-1", className)}
       {...props}
     />
   )
@@ -243,7 +295,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
     <li
       data-slot="sidebar-menu-item"
-      className={cn("relative", className)}
+      className={cn("relative min-w-0 md:group-data-[collapsed=true]/sidebar:mx-auto md:group-data-[collapsed=true]/sidebar:w-10 md:group-data-[collapsed=true]/sidebar:max-w-full", className)}
       {...props}
     />
   )
@@ -266,15 +318,16 @@ function SidebarMenuButton({
 
   const button = (
     <Comp
+      type={asChild ? undefined : "button"}
       data-slot="sidebar-menu-button"
       data-active={isActive}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
         onClick?.(event)
-        if (isMobile) setOpenMobile(false)
+        if (isMobile && !event.defaultPrevented) setOpenMobile(false)
       }}
       className={cn(
-        "flex h-10 w-full items-center gap-3 rounded-full px-3 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-4 focus-visible:ring-ring/25 data-[active=true]:bg-primary/10 data-[active=true]:font-semibold data-[active=true]:text-primary [&_svg]:size-4.5 [&_svg]:shrink-0 [&>span:last-child]:truncate",
-        "md:group-data-[collapsed=true]/sidebar:size-10 md:group-data-[collapsed=true]/sidebar:justify-center md:group-data-[collapsed=true]/sidebar:px-0 md:group-data-[collapsed=true]/sidebar:[&>span]:sr-only",
+        "flex h-10 w-full min-w-0 items-center gap-3 overflow-hidden rounded-full px-3 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-4 focus-visible:ring-ring/25 disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-primary/10 data-[active=true]:font-semibold data-[active=true]:text-primary [&_svg]:size-4.5 [&_svg]:shrink-0 [&>span:last-child]:truncate",
+        "md:group-data-[collapsed=true]/sidebar:justify-center md:group-data-[collapsed=true]/sidebar:gap-0 md:group-data-[collapsed=true]/sidebar:px-0 md:group-data-[collapsed=true]/sidebar:[&>span]:sr-only",
         className
       )}
       {...props}
@@ -312,17 +365,20 @@ function SidebarTrigger({
   onClick,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { toggleSidebar } = useSidebar()
+  const { sidebarId, collapsed, isMobile, openMobile, toggleSidebar } = useSidebar()
 
   return (
     <Button
       data-slot="sidebar-trigger"
+      type="button"
+      aria-controls={sidebarId}
+      aria-expanded={isMobile ? openMobile : !collapsed}
       variant="ghost"
       size="icon-sm"
       className={className}
       onClick={(event) => {
         onClick?.(event)
-        toggleSidebar()
+        if (!event.defaultPrevented) toggleSidebar()
       }}
       {...props}
     >

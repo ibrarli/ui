@@ -28,7 +28,10 @@ export default function SidebarDemo() {
     <SidebarProvider className="min-h-[30rem]">
       <Sidebar className="md:h-[28.5rem]">
         <SidebarHeader>
-          <div className="px-3 py-1 font-heading text-lg font-bold">Acme</div>
+          <div className="flex h-10 items-center px-3 font-heading text-lg font-bold md:group-data-[collapsed=true]/sidebar:justify-center md:group-data-[collapsed=true]/sidebar:px-0" aria-label="Acme workspace">
+            <span className="md:group-data-[collapsed=true]/sidebar:hidden">Acme</span>
+            <span aria-hidden="true" className="hidden size-9 items-center justify-center rounded-xl bg-primary/10 text-primary md:group-data-[collapsed=true]/sidebar:inline-flex">A</span>
+          </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>

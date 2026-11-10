@@ -6,7 +6,7 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
       data-slot="table-container"
-      className="scrollbar-soft relative w-full overflow-x-auto rounded-3xl bg-card shadow-soft in-data-[slot=card]:shadow-none"
+      className="scrollbar-soft relative min-w-0 w-full overflow-x-auto rounded-3xl bg-card shadow-soft in-data-[slot=card]:shadow-none"
     >
       <table
         data-slot="table"

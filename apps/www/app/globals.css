@@ -24,19 +24,19 @@
   display: grid;
 }
 
-.prose-docs h2 {
+.prose-docs h2:not([data-slot]) {
   @apply mt-12 mb-4 scroll-m-24 text-2xl font-bold tracking-tight;
 }
 
-.prose-docs h3 {
+.prose-docs h3:not([data-slot]) {
   @apply mt-8 mb-3 scroll-m-24 text-lg font-bold tracking-tight;
 }
 
-.prose-docs p {
+.prose-docs p:not([data-slot]) {
   @apply leading-7 text-muted-foreground [&:not(:first-child)]:mt-4;
 }
 
-.prose-docs ul {
+.prose-docs ul:not([data-slot]) {
   @apply mt-4 ml-5 list-disc space-y-2 text-muted-foreground;
 }
 

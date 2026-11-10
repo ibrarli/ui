@@ -22,3 +22,5 @@ packages/cli/registry
 *.log
 .vercel
 .turbo
+test-results/
+playwright-report/

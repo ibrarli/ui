@@ -1,9 +1,11 @@
 import type * as React from "react"
 
+import AccordionDemo from "./accordion-demo"
 import AlertDemo from "./alert-demo"
 import AvatarDemo from "./avatar-demo"
 import BadgeDemo from "./badge-demo"
 import ButtonDemo from "./button-demo"
+import BreadcrumbDemo from "./breadcrumb-demo"
 import CardDemo from "./card-demo"
 import CheckboxDemo from "./checkbox-demo"
 import DialogDemo from "./dialog-demo"
@@ -11,6 +13,7 @@ import DropdownMenuDemo from "./dropdown-menu-demo"
 import InputDemo from "./input-demo"
 import LabelDemo from "./label-demo"
 import NavbarDemo from "./navbar-demo"
+import PaginationDemo from "./pagination-demo"
 import ProgressDemo from "./progress-demo"
 import SelectDemo from "./select-demo"
 import SeparatorDemo from "./separator-demo"
@@ -24,10 +27,12 @@ import TextareaDemo from "./textarea-demo"
 import TooltipDemo from "./tooltip-demo"
 
 export const examples: Record<string, React.ComponentType> = {
+  accordion: AccordionDemo,
   alert: AlertDemo,
   avatar: AvatarDemo,
   badge: BadgeDemo,
   button: ButtonDemo,
+  breadcrumb: BreadcrumbDemo,
   card: CardDemo,
   checkbox: CheckboxDemo,
   dialog: DialogDemo,
@@ -35,6 +40,7 @@ export const examples: Record<string, React.ComponentType> = {
   input: InputDemo,
   label: LabelDemo,
   navbar: NavbarDemo,
+  pagination: PaginationDemo,
   progress: ProgressDemo,
   select: SelectDemo,
   separator: SeparatorDemo,
