@@ -15,6 +15,8 @@ const run = (...args) => runIn(dir, ...args)
 const checkJavaScript = (source) => execFileSync("node", ["--check", "--input-type=module"], { input: source, encoding: "utf8" })
 
 try {
+  const packageVersion = JSON.parse(fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")).version
+  assert.equal(execFileSync("node", [cli, "--version"], { encoding: "utf8" }).trim(), packageVersion, "CLI reports the release version")
   fs.writeFileSync(path.join(dir, "package.json"), JSON.stringify({ name: "smoke", dependencies: { clsx: "*" } }))
   fs.writeFileSync(path.join(dir, "next.config.ts"), "export default {}\n")
   fs.writeFileSync(
@@ -57,10 +59,17 @@ try {
   run("add", "button", "--overwrite")
   assert.notEqual(fs.readFileSync(path.join(dir, "src/components/ui/button.tsx"), "utf8"), "// mine\n", "--overwrite replaces")
 
+  run("add", "toggle-group")
+  assert.ok(fs.existsSync(path.join(dir, "src/components/ui/toggle.tsx")), "toggle-group installs its toggle dependency")
+  assert.ok(
+    fs.readFileSync(path.join(dir, "src/components/ui/toggle-group.tsx"), "utf8").includes('from "~/components/ui/toggle"'),
+    "rewrites the toggle-group dependency alias"
+  )
+
   run("add", "--all")
   const count = fs.readdirSync(path.join(dir, "src/components/ui")).length
-  assert.equal(count, 25, "--all writes every component")
-  for (const name of ["accordion", "breadcrumb", "pagination"]) {
+  assert.equal(count, 31, "--all writes every component")
+  for (const name of ["accordion", "breadcrumb", "pagination", "collapsible", "popover", "radio-group", "slider", "toggle", "toggle-group"]) {
     assert.ok(fs.existsSync(path.join(dir, `src/components/ui/${name}.tsx`)), `${name}.tsx installed`)
   }
 

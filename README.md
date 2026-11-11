@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/ibrarli/apen-ui">
+  <a href="https://github.com/ibrarli/ui">
     <img alt="apen-ui by Apen Apps: rounded, dashboard-ready React components you copy into your project" src=".github/assets/banner.svg" width="100%">
   </a>
 </p>
@@ -76,10 +76,10 @@ The theme uses **Quicksand** for headings and **Plus Jakarta Sans** for text. Lo
 | Category | Components |
 | --- | --- |
 | Dashboard | `sidebar`, `navbar`, `stat-card` |
-| Forms | `button`, `input`, `textarea`, `label`, `checkbox`, `switch`, `select` |
-| Display | `card`, `table`, `badge`, `avatar`, `skeleton`, `progress`, `separator`, `accordion` |
+| Forms | `button`, `input`, `textarea`, `label`, `checkbox`, `switch`, `select`, `radio-group`, `slider`, `toggle`, `toggle-group` |
+| Display | `card`, `table`, `badge`, `avatar`, `skeleton`, `progress`, `separator`, `accordion`, `collapsible` |
 | Feedback | `alert`, `tooltip` |
-| Overlays | `dialog`, `dropdown-menu` |
+| Overlays | `dialog`, `dropdown-menu`, `popover` |
 | Navigation | `tabs`, `breadcrumb`, `pagination` |
 
 Run `npx apen-ui list` to see them in the terminal, or `npx apen-ui add --all` to add everything.
@@ -198,8 +198,8 @@ apen-ui/
 ```
 
 ```bash
-git clone https://github.com/ibrarli/apen-ui
-cd apen-ui
+git clone https://github.com/ibrarli/ui
+cd ui
 pnpm install
 pnpm dev                       # docs site on http://localhost:3000
 pnpm registry:build            # rebuild the JSON registry
@@ -228,7 +228,7 @@ npm publish
 
 ## Contributing
 
-Issues and pull requests are welcome at [github.com/ibrarli/apen-ui](https://github.com/ibrarli/apen-ui/issues). Run `pnpm build` and `pnpm --filter apen-ui test` before opening a PR.
+Issues and pull requests are welcome at [github.com/ibrarli/ui](https://github.com/ibrarli/ui/issues). Run `pnpm build` and `pnpm --filter apen-ui test` before opening a PR.
 
 ## License
 

@@ -25,6 +25,10 @@ export const registry = [
   { name: "checkbox", category: "forms", description: "Rounded checkbox built on Radix." },
   { name: "switch", category: "forms", description: "Toggle between on and off." },
   { name: "select", category: "forms", description: "Choose one option from a rounded popover list." },
+  { name: "radio-group", category: "forms", description: "Accessible single-choice controls with keyboard navigation." },
+  { name: "slider", category: "forms", description: "Touch-friendly sliders for single values and ranges." },
+  { name: "toggle", category: "forms", description: "A rounded pressed-state button with default and outline styles." },
+  { name: "toggle-group", category: "forms", description: "Grouped toggles for single or multiple selections." },
 
   // Display
   { name: "badge", category: "display", description: "Small status pill in soft or solid tones." },
@@ -35,12 +39,14 @@ export const registry = [
   { name: "progress", category: "display", description: "Progress bar filled with the brand gradient." },
   { name: "separator", category: "display", description: "Visual divider between content." },
   { name: "accordion", category: "display", description: "Expandable sections with keyboard navigation and smooth transitions." },
+  { name: "collapsible", category: "display", description: "Show and hide supporting content with an accessible disclosure." },
 
   // Feedback & overlays
   { name: "alert", category: "feedback", description: "Callout for info, success, warning and errors." },
   { name: "tooltip", category: "feedback", description: "Short hint that appears on hover or focus." },
   { name: "dialog", category: "overlay", description: "Modal window over a blurred backdrop." },
   { name: "dropdown-menu", category: "overlay", description: "Menu of actions opened from a trigger." },
+  { name: "popover", category: "overlay", description: "A floating panel for forms and controls, positioned within the viewport." },
   { name: "tabs", category: "navigation", description: "Switch between views with pill tabs." },
   { name: "breadcrumb", category: "navigation", description: "Responsive navigation trail with accessible current-page labels." },
   { name: "pagination", category: "navigation", description: "Pill-shaped page controls with active and disabled states." },

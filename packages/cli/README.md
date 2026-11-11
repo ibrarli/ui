@@ -43,14 +43,14 @@ Prints every component, grouped by category.
 
 ## Components
 
-`sidebar` `navbar` `stat-card` `button` `input` `textarea` `label` `checkbox` `switch` `select` `card` `table` `badge` `avatar` `skeleton` `progress` `separator` `accordion` `alert` `tooltip` `dialog` `dropdown-menu` `tabs` `breadcrumb` `pagination`
+`sidebar` `navbar` `stat-card` `button` `input` `textarea` `label` `checkbox` `switch` `select` `radio-group` `slider` `toggle` `toggle-group` `card` `table` `badge` `avatar` `skeleton` `progress` `separator` `accordion` `collapsible` `alert` `tooltip` `dialog` `dropdown-menu` `popover` `tabs` `breadcrumb` `pagination`
 
 ## Requirements
 
 - Node.js 20+
 - React 19 and Tailwind CSS v4
 
-Full documentation, theming and the dashboard example: [github.com/ibrarli/apen-ui](https://github.com/ibrarli/apen-ui).
+Full documentation, theming and the dashboard example: [github.com/ibrarli/ui](https://github.com/ibrarli/ui).
 
 ## License
 
