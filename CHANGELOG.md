@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 — 2026-11-11
+
+- Show the full README on npm, with the banner, badges and docs used on GitHub.
+
 ## 0.2.0 — 2026-11-11
 
 - Expand the registry to 31 components with accordion, breadcrumb, pagination, collapsible, popover, radio group, slider, toggle and toggle group.
