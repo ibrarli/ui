@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2 — 2026-11-11
+
+- Fix the README banner on npm and GitHub by loading it from the published package.
+
 ## 0.2.1 — 2026-11-11
 
 - Show the full README on npm, with the banner, badges and docs used on GitHub.
