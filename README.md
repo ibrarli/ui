@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.apenapps.com">
-    <img alt="apen-ui by Apen Apps: rounded, dashboard-ready React components you copy into your project" src="https://raw.githubusercontent.com/ibrarli/ui/main/.github/assets/banner.svg" width="100%">
+    <img alt="apen-ui by Apen Apps: rounded, dashboard-ready React components you copy into your project" src="https://cdn.jsdelivr.net/npm/apen-ui/banner.svg" width="100%">
   </a>
 </p>
 
