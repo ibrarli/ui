@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/ibrarli/ui">
-    <img alt="apen-ui by Apen Apps: rounded, dashboard-ready React components you copy into your project" src=".github/assets/banner.svg" width="100%">
+  <a href="https://www.apenapps.com">
+    <img alt="apen-ui by Apen Apps: rounded, dashboard-ready React components you copy into your project" src="https://raw.githubusercontent.com/ibrarli/ui/main/.github/assets/banner.svg" width="100%">
   </a>
 </p>
 
@@ -16,6 +16,7 @@
   <a href="#components">Components</a> ·
   <a href="#cli">CLI</a> ·
   <a href="#theming">Theming</a> ·
+  <a href="#adding-a-component">Adding a component</a> ·
   <a href="https://www.apenapps.com">apenapps.com</a>
 </p>
 
@@ -34,7 +35,7 @@ Apen UI is a set of rounded, dashboard-ready React components in the Apen Apps s
 - **Familiar API:** the same composition, `data-slot` attributes and CSS variable names as shadcn/ui, with Radix underneath for accessibility.
 - **Built on:** React 19, Tailwind CSS v4, Radix UI, class-variance-authority and [apen-icons](https://www.npmjs.com/package/apen-icons).
 
-Built by [Apen Apps](https://www.apenapps.com). Pairs with [create-apen](https://github.com/ibrarli/create-apen), which scaffolds full-stack projects.
+Built by [Apen Apps](https://www.apenapps.com). Pairs with [create-apen](https://www.npmjs.com/package/create-apen), which scaffolds full-stack projects.
 
 ## Quick start
 
@@ -110,7 +111,7 @@ export default function Dashboard() {
 }
 ```
 
-The complete example lives in [`apps/www/app/dashboard`](apps/www/app/dashboard).
+The complete example lives in [`apps/www/app/dashboard`](https://github.com/ibrarli/ui/tree/main/apps/www/app/dashboard).
 
 ## CLI
 
@@ -205,7 +206,7 @@ pnpm dev                       # docs site on http://localhost:3000
 pnpm registry:build            # rebuild the JSON registry
 pnpm --filter apen-ui test     # build the CLI and run its smoke test
 pnpm exec playwright install chromium --only-shell # first browser test run
-pnpm test:browser             # responsive layouts and keyboard interactions
+pnpm test:browser              # responsive layouts and keyboard interactions
 pnpm build                     # registry, CLI and docs
 ```
 
